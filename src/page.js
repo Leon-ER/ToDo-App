@@ -2,8 +2,8 @@ import { createTask, addTaskToArray } from "./task";
 import removeTask from "./removeTask";
 import { addProjectToArray, createProject } from "./project";
 import removeProject from "./removeProject";
-import { initialize, projectStorage} from "./localStorage";
-import { createCardDay ,createCardOverdue} from "./checkDates";
+import { initialize, projectStorage } from "./localStorage";
+import { createCardDay, createCardOverdue } from "./checkDates";
 
 let projectId = "";
 export default function createTODO() {
@@ -21,22 +21,60 @@ export default function createTODO() {
       projectId = target.id;
     }
     if (event.target.matches(".projectRemove")) {
-      removeProject(event);
+      confirmationModal.style.display = "block";
+      yesBtn.addEventListener("click", () => {
+        removeProject(event);
+        confirmationModal.style.display = "none";
+      });
+      noBtn.addEventListener("click", () => {
+        confirmationModal.style.display = "none";
+      });
     }
   });
 
   const tabSection = document.getElementById("tabSection");
+  const confirmationModal = document.getElementById("confirmation");
+  const spanConfirmation =document.getElementsByClassName("closeConfirmation")[0];
+  const yesBtn = document.getElementById("yes");
+  const noBtn = document.getElementById("no");
 
+  spanConfirmation.addEventListener("click", () => {
+    confirmationModal.style.display = "none";
+  });
   tabSection.addEventListener("click", (event) => {
     if (event.target.matches("#addTask")) {
       modal.style.display = "block";
     }
     // remove btn
     if (event.target.matches(".remove")) {
-      removeTask(event);
+      confirmationModal.style.display = "block";
+      yesBtn.addEventListener("click", () => {
+        removeTask(event);
+        confirmationModal.style.display = "none";
+      });
+      noBtn.addEventListener("click", () => {
+        confirmationModal.style.display = "none";
+      });
     }
   });
+  function addCollapsibleListeners() {
+    let coll = document.getElementsByClassName("collapsible");
+    for (let i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content = this.nextElementSibling;
+        if (content) {
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        }
+      });
+    }
+  }
 
+  addCollapsibleListeners();
   // modal popUp
   let modal = document.getElementById("myModal");
   let span = document.getElementsByClassName("close")[0];
@@ -47,6 +85,12 @@ export default function createTODO() {
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
+    }
+    if (event.target == confirmationModal) {
+      confirmationModal.style.display = "none";
+    }
+    if (event.target == modalProject) {
+      modalProject.style.display = "none";
     }
   };
 
@@ -60,6 +104,7 @@ export default function createTODO() {
       addTaskToArray(newTask);
       createCardDay();
       createCardOverdue();
+      addCollapsibleListeners();
       modal.style.display = "none";
       document.getElementById("submitTask").reset();
     }
@@ -86,11 +131,6 @@ export default function createTODO() {
   });
   spanClose.addEventListener("click", () => {
     modalProject.style.display = "none";
-  });
-  window.addEventListener("click", (event) => {
-    if (event.target == modalProject) {
-      modalProject.style.display = "none";
-    }
   });
 }
 createCardOverdue();

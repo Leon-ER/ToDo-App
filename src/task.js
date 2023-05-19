@@ -60,30 +60,38 @@ function createTaskBlueprint(containerID,taskName,priority,dateTask,description,
   const taskPriosity = document.createElement("p");
   const taskDescription = document.createElement("p");
   const checkbox = document.createElement("input");
+  const collapsable = document.createElement("div");
 
-  container.appendChild(divTask);
-  divTask.classList.add("task");
-  divTask.appendChild(checkbox);
+
+  container.appendChild(collapsable);
+  collapsable.classList.add('collapsible');
+  collapsable.appendChild(checkbox);
   checkbox.type = "checkbox";
   checkbox.setAttribute('id','projectCompleted');
-  divTask.appendChild(text);
+  collapsable.appendChild(text);
   text.innerHTML = taskName;
+  collapsable.appendChild(button);
+  button.classList.add("remove");
+  button.innerHTML = "Remove";
 
+
+  container.appendChild(divTask);
+  divTask.setAttribute("id","task");
   divTask.appendChild(taskDescription);
   taskDescription.innerHTML = description;
-
+  taskDescription.classList.add('item');
+  taskPriosity.classList.add('item');
+  date.classList.add('item');
   divTask.appendChild(taskPriosity);
   taskPriosity.innerHTML = priority;
-
   divTask.appendChild(date);
   date.type = "date";
   date.value = dateTask;
   date.disabled = true;
-  divTask.appendChild(button);
-  button.classList.add("remove");
-  button.innerHTML = "Remove";
+
 
   button.setAttribute("data", taskID);
+  collapsable.setAttribute("data", taskID);
   divTask.setAttribute("data", taskID);
 }
 
