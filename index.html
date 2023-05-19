@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo app</title>
+  </head>
+  <body>
+    <header>
+      <h1>ToDo App</h1>
+    </header>
+    <div class="flexBox">
+      <nav id="btnContainer">
+        <div class="menu">
+          <button class="btnStyle" data-tab-target="#inbox">Inbox</button>
+          <button class="btnStyle" data-tab-target="#today">Today</button>
+          <button class="btnStyle" data-tab-target="#overdue">Overdue</button>
+        </div>
+        <hr />
+        <h2>Projects</h2>
+        <button class="addProject">+</button>
+        <div id="projectsDiv"></div>
+      </nav>
+      <section id="tabSection">
+        <div id="inbox" data-tab>
+          <h1>Inbox</h1>
+          <button class="btnStyle" id="addTask" data-id="inbox">
+            Add new task
+          </button>
+        </div>
+        <div id="today" data-tab>
+          <h1>Tasks due Today</h1>
+          <div id="tasksToday"></div>
+        </div>
+        <div id="overdue" data-tab>
+          <h1>Overdue tasks</h1>
+          <div id="tasksOverdue"></div>
+        </div>
+      </section>
+    </div>
+    <!-- popup -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="inputsModal">
+          <form action="#" method="get" id="submitTask">
+            <legend for="projectName">Project name</legend>
+            <input type="text" name="projectName" id="name" />
+            <legend for="description">Description</legend>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              maxlength="20"
+            />
+            <legend for="priority">Priority</legend>
+            <select name="priority" id="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <legend for="date">Date</legend>
+            <input type="date" name="date" id="date" />
+            <button type="submit" class="btnStyle" id="submitBtn">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="projectmyModal" class="projectModal">
+      <div class="modal-content">
+        <form action="" method="get" id="projectForm">
+          <span class="closeProject">&times;</span>
+          <legend for="projectName">Project name</legend>
+          <input type="text" name="projectName" id="projectName" />
+          <button type="submit" id="submitProject">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
