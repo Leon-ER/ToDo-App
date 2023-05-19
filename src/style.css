@@ -2,7 +2,6 @@
 body {
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 header {
@@ -11,6 +10,17 @@ header {
   background-color: rgb(60, 60, 62);
   border: 1px solid transparent;
   color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
+footer{
+  background-color: rgb(60, 60, 62);
+  color: rgb(255, 255, 255);
+  border: 1px solid transparent;
+  height: 5vh;
+  text-align: center;
+}
+a{
+  color: white;
   text-decoration: underline;
 }
 nav {
