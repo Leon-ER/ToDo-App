@@ -1,0 +1,28 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leon-ER/ToDo-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leon-ER/ToDo-App/issues"
+  },
+  "homepage": "https://github.com/Leon-ER/ToDo-App#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2",
+    "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0"
+  }
+}

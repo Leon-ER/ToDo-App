@@ -1,0 +1,229 @@
+
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+header {
+  padding-left: 2.3rem;
+  height: 10vh;
+  background-color: rgb(60, 60, 62);
+  border: 1px solid transparent;
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
+nav {
+  padding-top: 20px;
+  width: 20vw;
+  background-color: rgb(197, 199, 204);
+  gap: 20px;
+}
+section {
+  width: 80vw;
+}
+h2 {
+  font-size: 1.8rem;
+  padding-left: 2.3rem;
+}
+hr {
+  width: 300px;
+}
+
+select {
+  height: 20px;
+  align-self: center;
+}
+#submitTask>input{
+  height: 20px;
+  align-self: center;
+}
+
+#inbox {
+  padding-top: 20px;
+}
+#center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.task {
+  margin: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  padding-left: 10px;
+  height: 50px;
+  width: 700px;
+  border: 3px solid rgb(40, 37, 50);
+  border-radius: 12px;
+  transform: scale(1);
+  transition: transform .90s, visibility .25s ease-in;
+}
+.task:hover{
+  transform: scale(1.03);
+  transition: transform .90s, visibility .25s ease-in;
+}
+
+.btnStyle {
+  width: 150px;
+  height: 40px;
+  border-radius: 12px;
+  border: transparent;
+  background-color: rgb(89, 93, 93);
+  color: rgb(255, 255, 255);
+  font-size: 1.1rem;
+}
+.remove {
+  width: 150px;
+  height: 30px;
+  border-radius: 12px;
+  border: transparent;
+  align-self: center;
+  background-color: rgb(164, 84, 84);
+  font-size: 1.1rem;
+  margin-right: 5px;
+}
+.flexBox {
+  display: flex;
+  height: 90vh;
+}
+.menu {
+  display: flex;
+  flex-flow: column;
+  gap: 25px;
+  margin-left: 2.3rem;
+}
+.addProject {
+  font-size: 2rem;
+  background-color: transparent;
+  border: transparent;
+  margin-left: 2.3rem;
+}
+/* tabs */
+[data-tab] {
+  display: none;
+}
+.active[data-tab] {
+  display: block;
+  padding-top: 10px;
+  animation: animate 0.75s;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+}
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+.inputsModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 20px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.projectDivStyle{
+  background-color: rgba(39, 38, 38, 0.183);
+  width: 300px;
+  margin-left: 2.3rem;
+  border-radius: 12px;
+}
+.styleProject {
+  height: 40px;
+  width: 250px;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: transparent;
+}
+.projectDivStyle:hover {
+  background-color: #777575;
+}
+/* projectModal */
+
+.projectModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+.closeProject {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.closeProject:hover,
+.closeProject:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#projectsDiv{
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+.projectRemove{
+  color: rgb(164, 84, 84);
+  border: transparent;
+  background-color: transparent;
+  height: 40px;
+  font-size: 1.2rem;
+  width: 50px;
+  font-weight: 600;
+}
+@keyframes animate {
+  from {
+    opacity: 0;
+    transform: rotateX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
