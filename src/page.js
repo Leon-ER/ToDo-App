@@ -1,4 +1,4 @@
-import { createTask, addTaskToArray } from "./task";
+import { createTask, addTaskToArray, editTask } from "./task";
 import removeTask from "./removeTask";
 import { addProjectToArray, createProject } from "./project";
 import removeProject from "./removeProject";
@@ -7,10 +7,9 @@ import { createCardDay, createCardOverdue } from "./checkDates";
 
 let projectId = "";
 export default function createTODO() {
-  // tab switching
   const tabsContainer = document.getElementById("btnContainer");
-
   tabsContainer.addEventListener("click", (event) => {
+    // tab switching
     if (event.target.matches("[data-tab-target]")) {
       const target = document.querySelector(event.target.dataset.tabTarget);
       const tabContents = document.querySelectorAll("[data-tab]");
@@ -20,6 +19,7 @@ export default function createTODO() {
       target.classList.add("active");
       projectId = target.id;
     }
+    // remove project
     if (event.target.matches(".projectRemove")) {
       confirmationModal.style.display = "block";
       yesBtn.addEventListener("click", () => {
@@ -34,13 +34,20 @@ export default function createTODO() {
 
   const tabSection = document.getElementById("tabSection");
   const confirmationModal = document.getElementById("confirmation");
-  const spanConfirmation =document.getElementsByClassName("closeConfirmation")[0];
+  const spanConfirmation =
+    document.getElementsByClassName("closeConfirmation")[0];
   const yesBtn = document.getElementById("yes");
   const noBtn = document.getElementById("no");
 
+  const editModal = document.getElementById("editModal");
+  const spanEdit = document.getElementsByClassName("closeEdit")[0];
+  spanEdit.addEventListener("click", () => {
+    editModal.style.display = "none";
+  });
   spanConfirmation.addEventListener("click", () => {
     confirmationModal.style.display = "none";
   });
+
   tabSection.addEventListener("click", (event) => {
     if (event.target.matches("#addTask")) {
       modal.style.display = "block";
@@ -56,6 +63,20 @@ export default function createTODO() {
         confirmationModal.style.display = "none";
       });
     }
+    // edit btn
+    if (event.target.matches("#edit")) {
+      editModal.style.display = "block";
+      const dataId = editBtn.getAttribute('dataedit');
+      editSubmit.setAttribute("dataEdit", dataId);
+    }
+  });
+  
+  const editBtn = document.getElementById('edit');
+  const editSubmit = document.getElementById("editBtn");
+  editSubmit.addEventListener("click", () => {
+    const dataId = editSubmit.getAttribute('dataedit');
+    editTask(dataId);
+    editModal.style.display = "none";
   });
   function addCollapsibleListeners() {
     let coll = document.getElementsByClassName("collapsible");
@@ -64,10 +85,10 @@ export default function createTODO() {
         this.classList.toggle("active");
         let content = this.nextElementSibling;
         if (content) {
-          if (content.style.display === "block") {
+          if (content.style.display === "flex") {
             content.style.display = "none";
           } else {
-            content.style.display = "block";
+            content.style.display = "flex";
           }
         }
       });
@@ -91,6 +112,9 @@ export default function createTODO() {
     }
     if (event.target == modalProject) {
       modalProject.style.display = "none";
+    }
+    if (event.target == editModal) {
+      editModal.style.display = "none";
     }
   };
 
