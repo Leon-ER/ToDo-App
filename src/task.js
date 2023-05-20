@@ -1,9 +1,7 @@
 import "./style.css";
 import { projectId } from "./page";
-import { taskStorage } from "./localStorage";
-
+import { taskStorage, getTaskFromStorage } from "./localStorage";
 let tasks = [];
-
 // object constructor for tasks
 function Task(title, priority, date, description, projectID, taskData) {
   (this.title = title),
@@ -55,19 +53,50 @@ function createTask() {
   }
   return new Task(title, priority, date, description, containerID, taskData);
 }
-function editTask(taskID) {
-  const tasks = JSON.parse(localStorage.getItem("tasks"));
-  const taskToEdit = tasks.find((task) => task.taskData === taskID);
 
-  taskToEdit.title = document.getElementById("name").value;
-  taskToEdit.priority = document.getElementById("priority").value;
-  taskToEdit.date = document.getElementById("date").value;
-  taskToEdit.description = document.getElementById("description").value;
-  taskToEdit.taskData = taskToEdit.title.split(" ").join("").toLowerCase();
-  console.log(taskToEdit.taskData);
-  
+function editTask(taskID) {
+  const tasks = getTaskFromStorage();
+  const taskIndex = tasks.findIndex((task) => task.taskData === taskID);
+
+  if (taskIndex !== -1) {
+    const titleInput = document.getElementById("editName").value;
+    const priorityInput = document.getElementById("editPriority").value;
+    const dateInput = document.getElementById("editDate").value;
+    const descriptionInput = document.getElementById("editDescription").value;
+    const containerID = document.getElementById(projectId).getAttribute("id");
+    if (titleInput.trim() !== "") {
+      tasks[taskIndex].title = titleInput;
+      tasks[taskIndex].taskData = tasks[taskIndex].title
+        .split(" ")
+        .join("")
+        .toLowerCase();
+    }
+    if (priorityInput !== "") {
+      tasks[taskIndex].priority = priorityInput;
+    }
+    if (dateInput !== "") {
+      tasks[taskIndex].date = dateInput;
+    }
+    if (descriptionInput !== "") {
+      tasks[taskIndex].description = descriptionInput;
+    }
+    createTaskBlueprint(
+      containerID,
+      tasks[taskIndex].title,
+      tasks[taskIndex].priority,
+      tasks[taskIndex].date,
+      tasks[taskIndex].description,
+      tasks[taskIndex].taskData
+    );
+
+    const taskCard = document.querySelectorAll(`[data="${taskID}"]`);
+    Array.from(taskCard).forEach((task) => {
+      task.parentNode.removeChild(task);
+    });
+  }
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 function createTaskBlueprint(
   containerID,
   taskName,
@@ -120,7 +149,6 @@ function createTaskBlueprint(
   collapsable.setAttribute("data", taskID);
   divTask.setAttribute("data", taskID);
 }
-
 export {
   Task,
   createTask,

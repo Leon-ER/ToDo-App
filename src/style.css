@@ -101,12 +101,12 @@ select {
   background-color: rgb(164, 84, 84);
   font-size: 1.1rem;
 }
-.btnDiv{
+.btnDiv {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#edit{
+#edit {
   width: 100px;
   height: 30px;
   border-radius: 12px;
@@ -126,19 +126,38 @@ select {
   margin-left: 2.3rem;
 }
 .addProject {
-  font-size: 2rem;
+  font-size: 1.3rem;
   background-color: transparent;
   border: transparent;
   margin-left: 2.3rem;
+  width: 150px;
+  height: 40px;
+  border-radius: 12px;
+  border: transparent;
+  background-color: rgb(89, 93, 93);
+  color: rgb(255, 255, 255);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 /* tabs */
 [data-tab] {
   display: none;
 }
 .active[data-tab] {
-  display: block;
   padding-top: 10px;
   animation: animate 0.75s;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+}
+#tasksToday {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+}
+#tasksOverdue {
   display: flex;
   align-items: center;
   flex-flow: column;
@@ -162,7 +181,8 @@ select {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 30%;
+  width: 15%;
+  border-radius: 12px;
 }
 .inputsModal {
   display: flex;
@@ -213,13 +233,6 @@ select {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-}
 .closeProject {
   color: #aaa;
   float: right;
@@ -258,21 +271,14 @@ select {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
-}
-#yes{
+#yes {
   height: 30px;
   width: 100px;
   border: transparent;
   color: white;
   background-color: rgb(89, 93, 93);
 }
-#no{
+#no {
   height: 30px;
   width: 100px;
   border: transparent;
@@ -302,13 +308,6 @@ select {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-}
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30%;
 }
 .closeEdit {
   color: #aaa;

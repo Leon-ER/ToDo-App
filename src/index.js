@@ -1,2 +1,2 @@
-import createTODO from "./page";
-createTODO();
+import app from "./page";
+app();
