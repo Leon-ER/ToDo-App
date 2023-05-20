@@ -17,7 +17,7 @@
           <button class="btnStyle" data-tab-target="#today">Today</button>
           <button class="btnStyle" data-tab-target="#overdue">Overdue</button>
         </div>
-        <hr />
+        <hr/>
         <h2>Projects</h2>
         <button class="addProject">+</button>
         <div id="projectsDiv"></div>
@@ -48,14 +48,14 @@
         <span class="close">&times;</span>
         <div class="inputsModal">
           <form action="#" method="get" id="submitTask">
-            <legend for="projectName">Project name</legend>
+            <legend for="projectName">Task name</legend>
             <input type="text" name="projectName" id="name" />
             <legend for="description">Description</legend>
             <input
               type="text"
               name="description"
               id="description"
-              maxlength="20"
+              maxlength="50"
             />
             <legend for="priority">Priority</legend>
             <select name="priority" id="priority">
@@ -88,6 +88,36 @@
         <p>Are you sure you want to permenently delete the task/project</p>
         <button id="yes">Yes</button>
         <button id="no">No</button>
+      </div>
+    </div>
+    
+    <div id="editModal" class="editModal">
+      <div class="modal-content">
+        <span class="closeEdit">&times;</span>
+        <div class="inputsModal">
+          <form action="#" method="get" id="submitTask">
+            <legend for="projectName">Task name</legend>
+            <input type="text" name="projectName" id="name" />
+            <legend for="description">Description</legend>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              maxlength="50"
+            />
+            <legend for="priority">Priority</legend>
+            <select name="priority" id="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <legend for="date">Date</legend>
+            <input type="date" name="date" id="date" />
+            <button type="submit" class="btnStyle" id="editBtn">
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </body>
