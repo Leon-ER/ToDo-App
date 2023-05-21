@@ -53,4 +53,4 @@ function initialize() {
   }
 }
 
-export { initialize, taskStorage, projectStorage, getTaskFromStorage };
+export { initialize, taskStorage, projectStorage, getTaskFromStorage , getProjectFromStorage };

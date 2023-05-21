@@ -35,6 +35,7 @@ function addTaskToArray(newTask) {
 }
 // create the task card
 function createTask() {
+  let tasks = getTaskFromStorage();
   const title = document.getElementById("name").value;
   const priority = document.getElementById("priority").value;
   const date = document.getElementById("date").value;
@@ -51,6 +52,13 @@ function createTask() {
     alert("Please enter inputs");
     return null;
   }
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].title === title) {
+      alert("Task already exists");
+      return null;
+    }
+  }
+
   return new Task(title, priority, date, description, containerID, taskData);
 }
 
@@ -94,6 +102,7 @@ function editTask(taskID) {
       task.parentNode.removeChild(task);
     });
   }
+  document.getElementById('editTask').reset();
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
