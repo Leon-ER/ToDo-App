@@ -153,6 +153,7 @@ function createTaskBlueprint(
   date.value = dateTask;
   date.disabled = true;
 
+  checkbox.setAttribute("completed", taskID);
   editBtn.setAttribute("dataedit", taskID);
   button.setAttribute("data", taskID);
   collapsable.setAttribute("data", taskID);

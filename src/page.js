@@ -4,6 +4,7 @@ import { addProjectToArray, createProject } from "./project";
 import removeProject from "./removeProject";
 import { initialize, projectStorage } from "./localStorage";
 import { createCardDay, createCardOverdue } from "./checkDates";
+import {completeTask,setCompleted} from "./completedTask";
 
 let projectId = "";
 export default function app() {
@@ -93,6 +94,12 @@ export default function app() {
       const editSubmit = document.getElementById("editBtn");
       editSubmit.setAttribute("dataedit", dataId);
     }
+    // complete project
+    if(event.target.matches('#projectCompleted')){
+      let completedAttribute = document.getElementById('projectCompleted').getAttribute('completed');
+      completeTask(completedAttribute);
+      addCollapsibleListeners();
+    }
   });
   // submit button to edit the task
   editSubmit.addEventListener("click", (e) => {
@@ -165,6 +172,7 @@ export default function app() {
   };
   addCollapsibleListeners();
 }
+setCompleted();
 createCardOverdue();
 createCardDay();
 initialize();

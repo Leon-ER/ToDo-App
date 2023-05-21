@@ -163,6 +163,13 @@ select {
   flex-flow: column;
   justify-content: center;
 }
+
+#completedTask {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: center;
+}
 /* modal */
 .modal {
   display: none;
@@ -189,7 +196,21 @@ select {
   align-items: center;
   justify-content: center;
   flex-flow: column;
-  gap: 20px;
+}
+form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 10px;
+}
+input{
+  border-radius: 12px;
+  outline: none;
+
+}
+legend{
+  font-size: 18px;
 }
 .close {
   color: #aaa;
