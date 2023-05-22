@@ -72,6 +72,7 @@ function editTask(taskID) {
     const dateInput = document.getElementById("editDate").value;
     const descriptionInput = document.getElementById("editDescription").value;
     const containerID = document.getElementById(projectId).getAttribute("id");
+    
     if (titleInput.trim() !== "") {
       tasks[taskIndex].title = titleInput;
       tasks[taskIndex].taskData = tasks[taskIndex].title

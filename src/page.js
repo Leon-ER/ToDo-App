@@ -4,7 +4,7 @@ import { addProjectToArray, createProject } from "./project";
 import removeProject from "./removeProject";
 import { initialize, projectStorage } from "./localStorage";
 import { createCardDay, createCardOverdue } from "./checkDates";
-import {completeTask,setCompleted} from "./completedTask";
+import { completeTask, setCompleted } from "./completedTask";
 
 let projectId = "";
 export default function app() {
@@ -36,8 +36,10 @@ export default function app() {
         if (content) {
           if (content.style.display === "flex") {
             content.style.display = "none";
+            content.style.maxHeight = null;
           } else {
             content.style.display = "flex";
+            content.style.maxHeight = content.scrollHeight + 16 + "px";
           }
         }
       });
@@ -95,8 +97,10 @@ export default function app() {
       editSubmit.setAttribute("dataedit", dataId);
     }
     // complete project
-    if(event.target.matches('#projectCompleted')){
-      let completedAttribute = document.getElementById('projectCompleted').getAttribute('completed');
+    if (event.target.matches("#projectCompleted")) {
+      let completedAttribute = document
+        .getElementById("projectCompleted")
+        .getAttribute("completed");
       completeTask(completedAttribute);
       addCollapsibleListeners();
     }
